@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="app_name">Reednit</string>
+
+    <string name="action_update">Update</string>
+    <string name="action_refresh">Refresh</string>
+
+    <string name="snackbar_fetching_links">Loading more links</string>
+    <string name="snackbar_fetching_links_failure">Failed to load links</string>
+    <string name="snackbar_refresh_links_failure">Failed to refresh links</string>
+    <string name="snackbar_retry_action">Retry</string>
+
+    <string name="content_description_iv_display">Image associated with link.</string>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="@dimen/timekeeper_widget_width"
+    android:minHeight="@dimen/timekeeper_widget_height"
+    android:updatePeriodMillis="@integer/timekeeper_widget_update_period"
+    android:previewImage="@drawable/ic_launcher_foreground"
+    android:initialLayout="@layout/timekeeper_widget"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen"
+    >
+</appwidget-provider>

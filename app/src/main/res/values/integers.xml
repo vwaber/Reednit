@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="link_scroller_threshold">10</integer>;
+    <integer name="timekeeper_widget_update_period">1800000</integer>
+
+</resources>

@@ -1,0 +1,6 @@
+<resources>
+
+    <dimen name="timekeeper_widget_width">110dp</dimen>
+    <dimen name="timekeeper_widget_height">40dp</dimen>
+
+</resources>

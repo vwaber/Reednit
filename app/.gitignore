@@ -1,0 +1,5 @@
+# Keystore files
+/keystore
+
+# Build files
+/build
