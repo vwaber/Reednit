@@ -1,6 +1,6 @@
 package com.reednit.android.network.json;
 
-import com.reednit.android.model.Link;
+import com.reednit.android.room.Link;
 import com.squareup.moshi.Json;
 
 import java.util.List;

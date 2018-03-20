@@ -3,7 +3,7 @@ package com.reednit.android.network.json;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.reednit.android.model.Link;
+import com.reednit.android.room.Link;
 import com.squareup.moshi.Json;
 
 class LinkJson {
