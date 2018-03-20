@@ -8,55 +8,23 @@ import android.arch.persistence.room.PrimaryKey;
 public class Link {
 
     @PrimaryKey(autoGenerate = true)
-    private int uid;
+    int uid;
 
     @ColumnInfo(name = "title")
-    private String title;
+    public String title;
     @ColumnInfo(name = "url")
-    private String url;
+    public String url;
     @ColumnInfo(name = "thumbnail")
-    private String thumbnail;
+    public String thumbnail;
     @ColumnInfo(name = "like_count")
-    private int likeCount;
+    public int likeCount;
     @ColumnInfo(name = "is_self")
-    private int isSelf;
+    public int isSelf;
     @ColumnInfo(name = "is_video")
-    private int isVideo;
+    public int isVideo;
     @ColumnInfo(name = "selftext")
-    private int selftext;
+    public int selftext;
     @ColumnInfo(name = "selftext_html")
-    private int selftextHtml;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public int getLikeCount() {
-        return likeCount;
-    }
-
-    public int getIsSelf() {
-        return isSelf;
-    }
-
-    public int getIsVideo() {
-        return isVideo;
-    }
-
-    public int getSelftext() {
-        return selftext;
-    }
-
-    public int getSelftextHtml() {
-        return selftextHtml;
-    }
+    public int selftextHtml;
 
 }
