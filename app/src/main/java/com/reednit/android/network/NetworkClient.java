@@ -2,7 +2,7 @@ package com.reednit.android.network;
 
 import android.util.Log;
 
-import com.reednit.android.model.Link;
+import com.reednit.android.room.Link;
 import com.reednit.android.network.json.ListingJson;
 
 import java.io.IOException;

@@ -4,12 +4,16 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.reednit.android.network.json.LinkDataJson;
+
 @Entity(tableName = "link")
 public class Link {
 
     @PrimaryKey(autoGenerate = true)
     int uid;
 
+    @ColumnInfo(name = "name")
+    public String name;
     @ColumnInfo(name = "title")
     public String title;
     @ColumnInfo(name = "url")
@@ -23,8 +27,25 @@ public class Link {
     @ColumnInfo(name = "is_video")
     public int isVideo;
     @ColumnInfo(name = "selftext")
-    public int selftext;
+    public String selftext;
     @ColumnInfo(name = "selftext_html")
-    public int selftextHtml;
+    public String selftextHtml;
+
+    public Link(){}
+
+    public Link(LinkDataJson linkDataJson){
+        name = linkDataJson.name;
+        title = linkDataJson.title;
+        thumbnail = linkDataJson.thumbnail;
+        url = linkDataJson.url;
+        isSelf = boolToInt(linkDataJson.isSelf);
+        isVideo = boolToInt(linkDataJson.isVideo);
+        selftext = linkDataJson.selftext;
+        selftextHtml = linkDataJson.selftextHtml;
+    }
+
+    private int boolToInt(Boolean bool){
+        return (bool) ? 1 : 0;
+    }
 
 }
