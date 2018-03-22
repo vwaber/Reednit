@@ -13,6 +13,9 @@ public interface LinkDao {
     @Query("SELECT * FROM link")
     LiveData<List<Link>> getAll();
 
+    @Query("SELECT * FROM link WHERE uid = :uid")
+    LiveData<Link> get(int uid);
+
     @Query("SELECT * FROM link ORDER BY uid DESC LIMIT 1")
     Link getLast();
 
@@ -20,9 +23,6 @@ public interface LinkDao {
     void deleteAll();
 
     @Insert
-    void insert(Link link);
-
-    @Insert
-    void insert(Link... links);
+    void insert(List<Link> links);
 
 }

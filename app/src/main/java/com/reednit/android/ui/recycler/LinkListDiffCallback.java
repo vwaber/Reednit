@@ -2,7 +2,7 @@ package com.reednit.android.ui.recycler;
 
 import android.support.v7.util.DiffUtil;
 
-import com.reednit.android.model.Link;
+import com.reednit.android.room.Link;
 
 import java.util.List;
 import java.util.Objects;

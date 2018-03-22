@@ -9,8 +9,10 @@ import com.reednit.android.network.json.LinkDataJson;
 @Entity(tableName = "link")
 public class Link {
 
+    public final static String EXTRA_LINK_UID = "com.reednit.android.room.LINK_UID";
+
     @PrimaryKey(autoGenerate = true)
-    int uid;
+    public int uid;
 
     @ColumnInfo(name = "name")
     public String name;
@@ -23,9 +25,9 @@ public class Link {
     @ColumnInfo(name = "like_count")
     public int likeCount;
     @ColumnInfo(name = "is_self")
-    public int isSelf;
+    public boolean isSelf;
     @ColumnInfo(name = "is_video")
-    public int isVideo;
+    public boolean isVideo;
     @ColumnInfo(name = "selftext")
     public String selftext;
     @ColumnInfo(name = "selftext_html")
@@ -34,18 +36,15 @@ public class Link {
     public Link(){}
 
     public Link(LinkDataJson linkDataJson){
+        uid = 0;
         name = linkDataJson.name;
         title = linkDataJson.title;
         thumbnail = linkDataJson.thumbnail;
         url = linkDataJson.url;
-        isSelf = boolToInt(linkDataJson.isSelf);
-        isVideo = boolToInt(linkDataJson.isVideo);
+        isSelf = linkDataJson.isSelf;
+        isVideo = linkDataJson.isVideo;
         selftext = linkDataJson.selftext;
         selftextHtml = linkDataJson.selftextHtml;
-    }
-
-    private int boolToInt(Boolean bool){
-        return (bool) ? 1 : 0;
     }
 
 }

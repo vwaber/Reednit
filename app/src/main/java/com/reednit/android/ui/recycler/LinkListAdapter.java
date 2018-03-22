@@ -10,7 +10,7 @@ import android.webkit.URLUtil;
 import android.widget.TextView;
 
 import com.reednit.android.R;
-import com.reednit.android.model.Link;
+import com.reednit.android.room.Link;
 import com.reednit.android.ui.util.GlideApp;
 import com.reednit.android.ui.view.SquareImageView;
 
