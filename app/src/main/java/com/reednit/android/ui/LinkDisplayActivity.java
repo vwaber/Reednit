@@ -5,13 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 
 import com.reednit.android.R;
-import com.reednit.android.model.Link;
+import com.reednit.android.room.Link;
 import com.reednit.android.ui.activity.ReednitActivity;
 
-public class LinkDisplayActivity extends ReednitActivity
-        implements LinkDisplayFragment.OnFragmentCreatedListener {
-
-    private LinkDisplayFragment mLinkDisplayFragment;
+public class LinkDisplayActivity extends ReednitActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +21,13 @@ public class LinkDisplayActivity extends ReednitActivity
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        mLinkDisplayFragment =
-                (LinkDisplayFragment) fragmentManager.findFragmentById(R.id.fl_fragment);
+        LinkDisplayFragment mLinkDisplayFragment = (LinkDisplayFragment) fragmentManager.findFragmentById(R.id.fl_fragment);
 
-        if(mLinkDisplayFragment == null){
+        if(mLinkDisplayFragment == null) {
             mLinkDisplayFragment = new LinkDisplayFragment();
+            if (getIntent().hasExtra(Link.EXTRA_LINK_UID)) {
+                mLinkDisplayFragment.setArguments(getIntent().getExtras());
+            }
             fragmentManager.beginTransaction()
                     .add(R.id.fl_fragment, mLinkDisplayFragment)
                     .commit();
@@ -36,9 +35,4 @@ public class LinkDisplayActivity extends ReednitActivity
 
     }
 
-    @Override
-    public void onFragmentCreated() {
-        Link link = getIntent().getParcelableExtra(Link.EXTRA_LINK);
-        mLinkDisplayFragment.setLink(link);
-    }
 }

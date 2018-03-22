@@ -1,5 +1,7 @@
 package com.reednit.android.ui;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,7 +20,8 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.reednit.android.R;
-import com.reednit.android.model.Link;
+import com.reednit.android.arch.LinkViewModel;
+import com.reednit.android.room.Link;
 import com.reednit.android.ui.util.GlideApp;
 
 public class LinkDisplayFragment extends Fragment{
@@ -32,23 +35,34 @@ public class LinkDisplayFragment extends Fragment{
 
     private Link mLink;
 
-    interface OnFragmentCreatedListener {
-        void onFragmentCreated();
-    }
-
     public LinkDisplayFragment() {}
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if(getActivity() != null && getActivity() instanceof LinkDisplayActivity)
-            ((OnFragmentCreatedListener) getActivity()).onFragmentCreated();
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+        if(getActivity() == null) return;
+
+        LinkViewModel linkViewModel = ViewModelProviders.of(getActivity()).get(LinkViewModel.class);
+
+        if(getArguments() != null && getArguments().containsKey(Link.EXTRA_LINK_UID)){
+            int uid = getArguments().getInt(Link.EXTRA_LINK_UID);
+            linkViewModel.get(uid).observe(this, new Observer<Link>() {
+                @Override
+                public void onChanged(@Nullable Link link) {
+                    setLink(link);
+                }
+            });
+        }else{
+            linkViewModel.getSelected().observe(this, new Observer<Link>() {
+                @Override
+                public void onChanged(@Nullable Link link) {
+                    setLink(link);
+                }
+            });
+        }
+
     }
 
     @Override
