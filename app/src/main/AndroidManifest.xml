@@ -15,11 +15,6 @@
         android:theme="@style/AppTheme"
         >
 
-        <provider
-            android:name=".persistence.LocalContentProvider"
-            android:authorities="com.reednit.android"
-            android:exported="false" />
-
         <service
             android:name=".service.FetcherIntentService"
             android:exported="false" />
