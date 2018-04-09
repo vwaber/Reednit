@@ -99,7 +99,7 @@ public class MainFragment extends Fragment
         linkViewModel.getAll().observe(this, new Observer<List<Link>>() {
             @Override
             public void onChanged(@Nullable List<Link> links) {
-                mAdapter.update(links);
+                onDataUpdate(links);
             }
         });
 
@@ -153,36 +153,21 @@ public class MainFragment extends Fragment
 //        getLoaderManager().initLoader(0, null, this);
     }
 
-//    @Override
-//    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-//        if(getActivity() == null) return null;
-//        Uri uri = LocalContract.LinkEntry.CONTENT_URI;
-//        return new CursorLoader(getActivity(), uri, null, null, null, null);
-//    }
-//
-//    @Override
-//    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-//
-//        if(data == null || data.getCount() <= 0){
-//            refreshOperation();
-//            return;
-//        }
-//
-//        mFetchFailureSnackbar.dismiss();
-//        mRefreshFailureSnackbar.dismiss();
-//
-//        if(mIsRefreshing){
-//            mRecyclerView.smoothScrollToPosition(0);
-//            mIsRefreshing = false;
-//        }
-//
-//        mAdapter.update(Link.listFromCursor(data));
-//        mScrollListener.reset();
-//        mSwipeRefreshLayout.setRefreshing(false);
-//    }
-//
-//    @Override
-//    public void onLoaderReset(Loader<Cursor> loader) {}
+    private void onDataUpdate(List<Link> links){
+
+        mAdapter.update(links);
+
+        mFetchFailureSnackbar.dismiss();
+        mRefreshFailureSnackbar.dismiss();
+
+        if(mIsRefreshing){
+            mRecyclerView.smoothScrollToPosition(0);
+            mIsRefreshing = false;
+        }
+
+        mScrollListener.reset();
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
 
     @Override
     public void onRefresh() {
