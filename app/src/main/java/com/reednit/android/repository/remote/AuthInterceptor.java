@@ -1,8 +1,8 @@
-package com.reednit.android.network;
+package com.reednit.android.repository.remote;
 
 import android.support.annotation.NonNull;
 
-import com.reednit.android.network.json.AuthTokenJson;
+import com.reednit.android.repository.remote.json.AuthTokenJson;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 

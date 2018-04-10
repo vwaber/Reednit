@@ -1,4 +1,4 @@
-package com.reednit.android.room;
+package com.reednit.android.repository.local;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;

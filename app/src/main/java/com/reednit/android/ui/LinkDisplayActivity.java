@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 
 import com.reednit.android.R;
-import com.reednit.android.room.Link;
+import com.reednit.android.repository.local.Link;
 import com.reednit.android.ui.activity.ReednitActivity;
 
 public class LinkDisplayActivity extends ReednitActivity {

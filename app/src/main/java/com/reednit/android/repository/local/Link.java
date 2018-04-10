@@ -1,10 +1,10 @@
-package com.reednit.android.room;
+package com.reednit.android.repository.local;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import com.reednit.android.network.json.LinkDataJson;
+import com.reednit.android.repository.remote.json.LinkDataJson;
 
 @Entity(tableName = "link")
 public class Link {

@@ -1,6 +1,6 @@
-package com.reednit.android.network;
+package com.reednit.android.repository.remote;
 
-import com.reednit.android.network.json.ListingJson;
+import com.reednit.android.repository.remote.json.ListingJson;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

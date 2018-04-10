@@ -20,8 +20,8 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.reednit.android.R;
-import com.reednit.android.arch.LinkViewModel;
-import com.reednit.android.room.Link;
+import com.reednit.android.viewmodel.LinkViewModel;
+import com.reednit.android.repository.local.Link;
 import com.reednit.android.ui.util.GlideApp;
 
 public class LinkDisplayFragment extends Fragment{

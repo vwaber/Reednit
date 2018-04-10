@@ -1,6 +1,6 @@
-package com.reednit.android.network.json;
+package com.reednit.android.repository.remote.json;
 
-import com.reednit.android.room.Link;
+import com.reednit.android.repository.local.Link;
 import com.squareup.moshi.Json;
 
 import java.util.List;

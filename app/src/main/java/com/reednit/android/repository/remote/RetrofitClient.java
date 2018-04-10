@@ -1,4 +1,4 @@
-package com.reednit.android.network;
+package com.reednit.android.repository.remote;
 
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;

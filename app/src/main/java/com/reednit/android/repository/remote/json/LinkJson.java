@@ -1,9 +1,9 @@
-package com.reednit.android.network.json;
+package com.reednit.android.repository.remote.json;
 
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.reednit.android.room.Link;
+import com.reednit.android.repository.local.Link;
 import com.squareup.moshi.Json;
 
 class LinkJson {

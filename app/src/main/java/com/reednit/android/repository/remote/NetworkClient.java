@@ -1,9 +1,9 @@
-package com.reednit.android.network;
+package com.reednit.android.repository.remote;
 
 import android.util.Log;
 
-import com.reednit.android.room.Link;
-import com.reednit.android.network.json.ListingJson;
+import com.reednit.android.repository.local.Link;
+import com.reednit.android.repository.remote.json.ListingJson;
 
 import java.io.IOException;
 import java.util.List;

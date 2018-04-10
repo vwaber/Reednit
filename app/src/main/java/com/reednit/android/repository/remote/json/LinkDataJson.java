@@ -1,4 +1,4 @@
-package com.reednit.android.network.json;
+package com.reednit.android.repository.remote.json;
 
 import com.squareup.moshi.Json;
 

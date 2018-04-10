@@ -1,4 +1,4 @@
-package com.reednit.android.arch;
+package com.reednit.android.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -6,8 +6,8 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.reednit.android.room.Link;
-import com.reednit.android.room.Repository;
+import com.reednit.android.repository.local.Link;
+import com.reednit.android.repository.Repository;
 
 import java.util.List;
 
