@@ -6,6 +6,7 @@ import android.util.Log;
 import com.reednit.android.repository.local.Link;
 import com.squareup.moshi.Json;
 
+@SuppressWarnings("unused")
 class LinkJson {
 
     private static final String LOG_TAG = LinkJson.class.getName();

@@ -13,9 +13,9 @@ import java.util.List;
 
 public class LinkViewModel extends AndroidViewModel {
 
-    private Repository mRepository;
+    private final Repository mRepository;
 
-    private final MutableLiveData<Link> selected = new MutableLiveData<Link>();
+    private final MutableLiveData<Link> selected = new MutableLiveData<>();
 
     public LinkViewModel(@NonNull Application application) {
         super(application);

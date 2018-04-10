@@ -15,10 +15,9 @@ import com.reednit.android.ui.recycler.LinkListAdapter;
 
 public class MainActivity extends ReednitActivity implements LinkListAdapter.OnLinkClickListener {
 
-    LinkViewModel mLinkViewModel;
+    private LinkViewModel mLinkViewModel;
 
     private boolean mIsDualPane;
-    private LinkDisplayFragment mLinkDisplayFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +39,18 @@ public class MainActivity extends ReednitActivity implements LinkListAdapter.OnL
                     .commit();
         }
 
-        mLinkDisplayFragment =
-                (LinkDisplayFragment) fragmentManager.findFragmentById(R.id.fl_fragment_secondary);
+        LinkDisplayFragment linkDisplayFragment = (LinkDisplayFragment) fragmentManager.findFragmentById(R.id.fl_fragment_secondary);
         View secondaryFragmentView = findViewById(R.id.fl_fragment_secondary);
         mIsDualPane = secondaryFragmentView != null && secondaryFragmentView.getVisibility() == View.VISIBLE;
 
-        if (mIsDualPane && mLinkDisplayFragment == null) {
-            mLinkDisplayFragment = new LinkDisplayFragment();
+        if (mIsDualPane && linkDisplayFragment == null) {
+            linkDisplayFragment = new LinkDisplayFragment();
             fragmentManager.beginTransaction()
-                    .add(R.id.fl_fragment_secondary, mLinkDisplayFragment)
+                    .add(R.id.fl_fragment_secondary, linkDisplayFragment)
                     .commit();
-        }else if(mLinkDisplayFragment != null){
+        }else if(linkDisplayFragment != null){
             fragmentManager.beginTransaction()
-                    .remove(mLinkDisplayFragment)
+                    .remove(linkDisplayFragment)
                     .commit();
         }
 

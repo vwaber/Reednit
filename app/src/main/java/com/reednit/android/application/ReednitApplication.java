@@ -6,7 +6,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class ReednitApplication extends Application{
 
-    FirebaseAnalytics mFirebaseAnalytics;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     public void onCreate() {

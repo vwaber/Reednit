@@ -2,9 +2,8 @@ package com.reednit.android.repository.remote.json;
 
 import com.squareup.moshi.Json;
 
+@SuppressWarnings("unused")
 public class LinkDataJson {
-
-    public LinkDataJson() {}
 
     @Json(name = "name")
     public String name;
@@ -28,6 +27,5 @@ public class LinkDataJson {
     public String selftext;
     @Json(name = "selftext_html")
     public String selftextHtml;
-
 
 }

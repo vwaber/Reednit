@@ -97,7 +97,7 @@ public class LinkDisplayFragment extends Fragment{
         return rootView;
     }
 
-    public void setLink(Link link) {
+    private void setLink(Link link) {
 
         if(link == null) return;
 

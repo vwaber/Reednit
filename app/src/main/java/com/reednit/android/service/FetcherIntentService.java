@@ -14,7 +14,7 @@ public class FetcherIntentService extends IntentService {
     public static final String ACTION_BROADCAST = "com.reednit.android.service.BROADCAST";
 
     public static final String EXTRA_STATUS = "com.reednit.android.service.STATUS";
-    public static final String STATUS_SUCCESS = "com.reednit.android.service.SUCCESS";
+    private static final String STATUS_SUCCESS = "com.reednit.android.service.SUCCESS";
     public static final String STATUS_FETCH_FAILURE = "com.reednit.android.service.FETCH_FAILURE";
     public static final String STATUS_REFRESH_FAILURE = "com.reednit.android.service.REFRESH_FAILURE";
 

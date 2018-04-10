@@ -3,6 +3,7 @@ package com.reednit.android.repository.remote.json;
 
 import com.squareup.moshi.Json;
 
+@SuppressWarnings("unused")
 public class AuthTokenJson {
 
     @Json(name = "access_token")

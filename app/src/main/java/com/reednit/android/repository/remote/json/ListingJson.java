@@ -5,6 +5,7 @@ import com.squareup.moshi.Json;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class ListingJson {
 
     @Json(name = "kind")
@@ -15,10 +16,6 @@ public class ListingJson {
     private String before;
     @Json(name = "after")
     private String after;
-
-//    public ContentValues[] toContentValuesArrayFromChildren(){
-//        return data.toContentValuesArray();
-//    }
 
     public List<Link> toModel(){
         return data.toModel();

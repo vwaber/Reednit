@@ -6,6 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.reednit.android.repository.remote.json.LinkDataJson;
 
+@SuppressWarnings("WeakerAccess")
 @Entity(tableName = "link")
 public class Link {
 

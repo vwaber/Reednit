@@ -1,6 +1,7 @@
 package com.reednit.android.ui.recycler;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,20 +33,21 @@ public class LinkListAdapter extends RecyclerView.Adapter<LinkListAdapter.LinkVi
         void onLinkClick(Link link);
     }
 
+    @NonNull
     @Override
-    public LinkViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LinkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.link, parent, false);
         return new LinkViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(LinkViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LinkViewHolder holder, int position) {
         holder.bind(position);
     }
 
     @Override
-    public void onViewRecycled(LinkViewHolder holder) {
+    public void onViewRecycled(@NonNull LinkViewHolder holder) {
         holder.recycle();
     }
 

@@ -14,7 +14,7 @@ public class Repository {
 
     private final NetworkClient mNetworkClient;
 
-    private LinkDao mLinkDao;
+    private final LinkDao mLinkDao;
 
     public Repository(Context context){
         mNetworkClient = NetworkClient.getInstance();

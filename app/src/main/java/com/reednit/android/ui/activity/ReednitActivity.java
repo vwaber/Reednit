@@ -9,8 +9,6 @@ import com.reednit.android.widget.TimeKeeperWidgetProvider;
 @SuppressLint("Registered")
 public class ReednitActivity extends AppCompatActivity {
 
-    private static final String USAGE_TIME = "usage_time";
-
     private TimeKeeper mTimeKeeper;
 
     @Override
