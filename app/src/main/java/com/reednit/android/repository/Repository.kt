@@ -13,11 +13,11 @@ class Repository(context: Context) {
     private val mLinkDao: LinkDao = AppDatabase.getDatabase(context).linkDao()
 
     fun getAllLinks(): LiveData<List<Link>> {
-        return mLinkDao.all
+        return mLinkDao.loadAll()
     }
 
     fun getLink(uid: Int): LiveData<Link> {
-        return mLinkDao.get(uid)
+        return mLinkDao.load(uid)
     }
 
     fun fetchFreshLinks(): Boolean {
@@ -29,7 +29,7 @@ class Repository(context: Context) {
     }
 
     fun fetchAdditionalLinks(): Boolean {
-        val links: List<Link> = mNetworkClient.fetchLinks(mLinkDao.last.name)
+        val links: List<Link> = mNetworkClient.fetchLinks(mLinkDao.findLast().name)
         if(links.isEmpty()) return false
         mLinkDao.insert(links)
         return true
