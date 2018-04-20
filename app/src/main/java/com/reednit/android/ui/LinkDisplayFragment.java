@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.reednit.android.R;
+import com.reednit.android.repository.local.LinkKt;
 import com.reednit.android.viewmodel.LinkViewModel;
 import com.reednit.android.repository.local.Link;
 import com.reednit.android.ui.util.GlideApp;
@@ -46,8 +47,8 @@ public class LinkDisplayFragment extends Fragment{
 
         LinkViewModel linkViewModel = ViewModelProviders.of(getActivity()).get(LinkViewModel.class);
 
-        if(getArguments() != null && getArguments().containsKey(Link.EXTRA_LINK_UID)){
-            int uid = getArguments().getInt(Link.EXTRA_LINK_UID);
+        if(getArguments() != null && getArguments().containsKey(LinkKt.EXTRA_LINK_UID)){
+            int uid = getArguments().getInt(LinkKt.EXTRA_LINK_UID);
             linkViewModel.get(uid).observe(this, new Observer<Link>() {
                 @Override
                 public void onChanged(@Nullable Link link) {
@@ -104,7 +105,7 @@ public class LinkDisplayFragment extends Fragment{
         mLink = link;
 
         if(getActivity() != null)
-            getActivity().setTitle(link.title);
+            getActivity().setTitle(link.getTitle());
 
         mDisplayWebView.loadUrl(ABOUT_BLANK);
 
@@ -112,21 +113,21 @@ public class LinkDisplayFragment extends Fragment{
         mDisplayWebView.setVisibility(View.GONE);
         mDisplayTextView.setVisibility(View.GONE);
 
-        if(link.isSelf){
-            displaySelftext(link.selftext);
+        if(link.isSelf()){
+            displaySelftext(link.getSelftext());
             return;
         }
 
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        String extension = MimeTypeMap.getFileExtensionFromUrl(link.url);
+        String extension = MimeTypeMap.getFileExtensionFromUrl(link.getUrl());
         String mimeType = mimeTypeMap.getMimeTypeFromExtension(extension);
 
         if (mimeType != null && mimeType.startsWith(MIME_IMAGE_PREFIX)) {
-            displayImage(link.url);
+            displayImage(link.getUrl());
             return;
         }
 
-        displayWeb(link.url);
+        displayWeb(link.getUrl());
 
     }
 

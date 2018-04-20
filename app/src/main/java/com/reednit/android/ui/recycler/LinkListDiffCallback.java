@@ -29,8 +29,8 @@ class LinkListDiffCallback extends DiffUtil.Callback{
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        String newName = mNewLinkList.get(newItemPosition).name;
-        String oldName = mOldLinkList.get(oldItemPosition).name;
+        String newName = mNewLinkList.get(newItemPosition).getName();
+        String oldName = mOldLinkList.get(oldItemPosition).getName();
         return (newName == null ? oldName == null : newName.equals(oldName));
     }
 

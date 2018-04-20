@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d8fc840fb4b8b6a8c28e3e9abaa8d868",
+    "identityHash": "1b161c52d7202ced0608d1e5943789dc",
     "entities": [
       {
         "tableName": "link",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `title` TEXT, `url` TEXT, `thumbnail` TEXT, `like_count` INTEGER NOT NULL, `is_self` INTEGER NOT NULL, `is_video` INTEGER NOT NULL, `selftext` TEXT, `selftext_html` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `title` TEXT NOT NULL, `url` TEXT NOT NULL, `thumbnail` TEXT NOT NULL, `is_self` INTEGER NOT NULL, `selftext` TEXT NOT NULL, `selftext_html` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "uid",
@@ -18,30 +18,24 @@
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "title",
             "columnName": "title",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "url",
             "columnName": "url",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "thumbnail",
             "columnName": "thumbnail",
             "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "likeCount",
-            "columnName": "like_count",
-            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -51,22 +45,16 @@
             "notNull": true
           },
           {
-            "fieldPath": "isVideo",
-            "columnName": "is_video",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
             "fieldPath": "selftext",
             "columnName": "selftext",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "selftextHtml",
             "columnName": "selftext_html",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -81,7 +69,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d8fc840fb4b8b6a8c28e3e9abaa8d868\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"1b161c52d7202ced0608d1e5943789dc\")"
     ]
   }
 }

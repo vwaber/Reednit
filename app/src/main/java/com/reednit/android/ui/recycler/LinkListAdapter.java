@@ -79,13 +79,13 @@ public class LinkListAdapter extends RecyclerView.Adapter<LinkListAdapter.LinkVi
 
         void bind(int position){
             Link link = mLinkList.get(position);
-            titleView.setText(link.title);
+            titleView.setText(link.getTitle());
 
-            if(!URLUtil.isValidUrl(link.thumbnail)) return;
+            if(!URLUtil.isValidUrl(link.getThumbnail())) return;
 
             Context context = this.thumbnailView.getContext();
             GlideApp.with(context)
-                    .load(link.thumbnail)
+                    .load(link.getThumbnail())
                     .fitCenter()
                     .into(thumbnailView);
         }

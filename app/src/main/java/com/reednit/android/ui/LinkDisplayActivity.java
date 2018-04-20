@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.reednit.android.R;
 import com.reednit.android.repository.local.Link;
+import com.reednit.android.repository.local.LinkKt;
 import com.reednit.android.ui.activity.ReednitActivity;
 
 public class LinkDisplayActivity extends ReednitActivity {
@@ -25,7 +26,7 @@ public class LinkDisplayActivity extends ReednitActivity {
 
         if(mLinkDisplayFragment == null) {
             mLinkDisplayFragment = new LinkDisplayFragment();
-            if (getIntent().hasExtra(Link.EXTRA_LINK_UID)) {
+            if (getIntent().hasExtra(LinkKt.EXTRA_LINK_UID)) {
                 mLinkDisplayFragment.setArguments(getIntent().getExtras());
             }
             fragmentManager.beginTransaction()

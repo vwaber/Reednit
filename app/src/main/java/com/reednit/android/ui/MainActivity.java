@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.reednit.android.R;
+import com.reednit.android.repository.local.LinkKt;
 import com.reednit.android.viewmodel.LinkViewModel;
 import com.reednit.android.repository.local.Link;
 import com.reednit.android.ui.activity.ReednitActivity;
@@ -63,7 +64,7 @@ public class MainActivity extends ReednitActivity implements LinkListAdapter.OnL
             mLinkViewModel.select(link);
         }else {
             Bundle args = new Bundle();
-            args.putInt(Link.EXTRA_LINK_UID, link.uid);
+            args.putInt(LinkKt.EXTRA_LINK_UID, link.getUid());
             Intent intent = new Intent(this, LinkDisplayActivity.class);
             intent.putExtras(args);
             startActivity(intent);

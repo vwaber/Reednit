@@ -3,9 +3,14 @@ package com.reednit.android.repository.remote;
 import android.util.Log;
 
 import com.reednit.android.repository.local.Link;
+import com.reednit.android.repository.remote.adapter.NullStringAdapter;
+import com.reednit.android.repository.remote.json.LinkJson;
 import com.reednit.android.repository.remote.json.ListingJson;
+import com.squareup.moshi.KotlinJsonAdapterFactory;
+import com.squareup.moshi.Moshi;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -30,10 +35,15 @@ public class NetworkClient {
                 .addInterceptor(new AuthInterceptor())
                 .build();
 
+        Moshi moshi = new Moshi.Builder()
+                .add(new NullStringAdapter())
+                .add(new KotlinJsonAdapterFactory())
+                .build();
+
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(httpClient)
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build();
     }
 
@@ -58,9 +68,16 @@ public class NetworkClient {
 
         if(listingJson == null) return null;
 
-        result = listingJson.toModel();
+//        result = listingJson.toModel();
 
-        return result;
+        List<LinkJson> children = listingJson.getData().getChildren();
+        List<Link> links = new ArrayList<>();
+
+        for(LinkJson json: children){
+            links.add(new Link(json.getData()));
+        }
+
+        return links;
 
     }
 
