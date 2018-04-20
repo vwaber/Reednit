@@ -1,3 +1,18 @@
+package com.reednit.android.repository.remote.json
+
+import com.squareup.moshi.Json
+
+data class AuthTokenJson(
+        @Json(name = "access_token")
+        var token: String,
+        @Json(name = "token_type")
+        var type: String,
+        @Json(name = "expires_in")
+        var expiresIn: String,
+        @Json(name = "scope")
+        var scope: String
+)
+
 //package com.reednit.android.repository.remote.json;
 //
 //

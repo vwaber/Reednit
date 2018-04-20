@@ -2,8 +2,10 @@ package com.reednit.android.repository.remote;
 
 import android.support.annotation.NonNull;
 
+import com.reednit.android.repository.remote.adapter.NullStringAdapter;
 import com.reednit.android.repository.remote.json.AuthTokenJson;
 import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.KotlinJsonAdapterFactory;
 import com.squareup.moshi.Moshi;
 
 import java.io.IOException;
@@ -41,7 +43,12 @@ class AuthInterceptor implements Interceptor{
             ResponseBody tokenBody = tokenResponse.body();
 
             if(tokenBody != null){
-                Moshi moshi = new Moshi.Builder().build();
+
+                Moshi moshi = new Moshi.Builder()
+                        .add(new NullStringAdapter())
+                        .add(new KotlinJsonAdapterFactory())
+                        .build();
+
                 JsonAdapter<AuthTokenJson> adapter = moshi.adapter(AuthTokenJson.class);
                 AuthTokenJson authToken = adapter.fromJson(tokenBody.string());
 
