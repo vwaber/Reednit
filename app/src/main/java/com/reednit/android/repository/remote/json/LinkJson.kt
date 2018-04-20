@@ -4,5 +4,5 @@ import com.squareup.moshi.Json
 
 data class LinkJson(
         @Json(name = "data")
-        var data: LinkDataJson
+        val data: LinkDataJson
 )

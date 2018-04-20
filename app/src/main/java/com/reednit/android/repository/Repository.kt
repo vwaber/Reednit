@@ -9,7 +9,7 @@ import com.reednit.android.repository.remote.NetworkClient
 
 class Repository(context: Context) {
 
-    private val mNetworkClient: NetworkClient = NetworkClient.getInstance()
+    private val mNetworkClient: NetworkClient = NetworkClient
     private val mLinkDao: LinkDao = AppDatabase.getDatabase(context).linkDao()
 
     fun getAllLinks(): LiveData<List<Link>> {
@@ -21,7 +21,7 @@ class Repository(context: Context) {
     }
 
     fun fetchFreshLinks(): Boolean {
-        val links: List<Link> = mNetworkClient.fetchLinks(null)
+        val links: List<Link> = mNetworkClient.fetchLinks("")
         if(links.isEmpty()) return false
         mLinkDao.deleteAll()
         mLinkDao.insert(links)
