@@ -4,13 +4,13 @@ import com.squareup.moshi.Json
 
 data class AuthTokenJson(
         @Json(name = "access_token")
-        var token: String,
+        val token: String,
         @Json(name = "token_type")
-        var type: String,
+        val type: String,
         @Json(name = "expires_in")
-        var expiresIn: String,
+        val expiresIn: String,
         @Json(name = "scope")
-        var scope: String
+        val scope: String
 )
 
 //package com.reednit.android.repository.remote.json;

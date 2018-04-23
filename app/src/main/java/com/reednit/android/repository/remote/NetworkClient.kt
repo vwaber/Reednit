@@ -2,6 +2,7 @@ package com.reednit.android.repository.remote
 
 import com.reednit.android.repository.local.Link
 import com.reednit.android.repository.remote.adapter.NullStringAdapter
+import com.reednit.android.repository.remote.interceptor.AuthInterceptor
 import com.reednit.android.repository.remote.json.LinkJson
 import com.reednit.android.repository.remote.json.ListingJson
 import com.squareup.moshi.KotlinJsonAdapterFactory
