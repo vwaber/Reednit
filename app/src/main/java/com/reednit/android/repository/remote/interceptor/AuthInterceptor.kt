@@ -4,52 +4,82 @@ import com.reednit.android.repository.remote.NetworkClient
 import com.reednit.android.repository.remote.json.AuthTokenJson
 import com.squareup.moshi.JsonAdapter
 import okhttp3.*
-import java.util.*
+import java.util.UUID
 
-const val TOKEN_REQUEST_URL: String = "https://www.reddit.com/api/v1/access_token"
-const val GRANT_TYPE: String = "https://oauth.reddit.com/grants/installed_client"
+private const val HTTP_STATUS_FORBIDDEN: Int = 403
+private const val TOKEN_REQUEST_URL: String = "https://www.reddit.com/api/v1/access_token"
+private const val GRANT_TYPE: String = "https://oauth.reddit.com/grants/installed_client"
+//TODO: Protect/hide APP_ID id to prevent abuse
+private const val APP_ID: String = "pheWpomhF7Mm3Q"
+
 
 class AuthInterceptor: Interceptor {
 
-    override fun intercept(chain: Interceptor.Chain?): Response {
+    //TODO: Move mDeviceId to permanent storage
+    private val mDeviceId: String = UUID.randomUUID().toString()
 
-        val request = chain!!.request()
-        val response: Response = chain.proceed(request)
+    private var mAuthToken: AuthTokenJson? = null
+    private var mTokenRetrievalTime: Long = 0
 
-        if(response.code() != 403) return response
+    override fun intercept(chain: Interceptor.Chain): Response {
 
-        val tokenRequsetBuilder: Request.Builder = Request.Builder()
-        tokenRequsetBuilder.url(TOKEN_REQUEST_URL)
-        setAuthHeader(tokenRequsetBuilder)
-        setAuthPost(tokenRequsetBuilder)
+        fun updateToken(){
+            mTokenRetrievalTime = System.currentTimeMillis()
+            mAuthToken = retrieveAuthToken(chain, mDeviceId)
+        }
 
-        val tokenResponse: Response  = chain.proceed(tokenRequsetBuilder.build())
-        val tokenBody: ResponseBody  = tokenResponse.body()!!
+        val builder: Request.Builder = chain.request().newBuilder()
 
-        val adapter: JsonAdapter<AuthTokenJson> = NetworkClient.moshi.adapter(AuthTokenJson::class.java)
-        val authTokenJson: AuthTokenJson  = adapter.fromJson(tokenBody.string())!!
+        if (
+                mAuthToken == null ||
+                ((System.currentTimeMillis() - mTokenRetrievalTime) / 1000)
+                >= mAuthToken!!.expiresIn
+        ) {
+            updateToken()
+        }
 
-        val authBuilder: Request.Builder = request.newBuilder()
-        authBuilder.header(
+        addAuthHeaderToRequestBuilder(builder, mAuthToken!!)
+
+        var response: Response = chain.proceed(builder.build())
+
+        if(response.code() == HTTP_STATUS_FORBIDDEN){
+            updateToken()
+            addAuthHeaderToRequestBuilder(builder, mAuthToken!!)
+            response = chain.proceed(builder.build())
+        }
+
+        return response
+    }
+
+    private fun addAuthHeaderToRequestBuilder(builder: Request.Builder, token: AuthTokenJson){
+        builder.header(
                 "Authorization",
-                "Bearer " + authTokenJson.token
+                "Bearer " + token.token
         )
-
-        return chain.proceed(authBuilder.build())
-
     }
 
-    private fun setAuthHeader(builder: Request.Builder) {
-        val credentials: String = Credentials.basic("pheWpomhF7Mm3Q", "")
+    private fun retrieveAuthToken(chain: Interceptor.Chain, deviceId: String): AuthTokenJson{
+
+        val builder: Request.Builder = Request.Builder()
+        val credentials: String = Credentials.basic(APP_ID, "")
+
+        builder.url(TOKEN_REQUEST_URL)
         builder.header("Authorization", credentials)
-    }
 
-    private fun setAuthPost(builder: Request.Builder) {
-        val formBody: RequestBody  = FormBody.Builder()
+        val body: RequestBody  = FormBody.Builder()
                 .add("grant_type", GRANT_TYPE)
-                .add("device_id", UUID.randomUUID().toString())
+                .add("device_id", deviceId)
                 .build()
-        builder.post(formBody)
+        builder.post(body)
+
+        val response: Response  = chain.proceed(builder.build())
+        val tokenString: String = response.body()!!.string()
+
+        val adapter: JsonAdapter<AuthTokenJson> =
+                NetworkClient.moshi.adapter(AuthTokenJson::class.java)
+        val token: AuthTokenJson  = adapter.fromJson(tokenString)!!
+
+        return(token)
     }
 
 }
