@@ -3,7 +3,7 @@ A simple Reddit app for Android, still very much a work in progress
 
 The initial upload was my capstone project from the Android Development Nanodegree by Google & Udacity. I have since continued development and introduced new elements such Android Architecture Components as wells as manual translation to Kotlin.
 
-## Built With
+## Libraries
 * Android Architecture Components
 	* [Room](https://developer.android.com/topic/libraries/architecture/room.html) - persistent storage
 	* [LiveData](https://developer.android.com/topic/libraries/architecture/livedata.html) - observable data
