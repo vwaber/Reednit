@@ -9,30 +9,6 @@
     android:layout_height="match_parent"
     >
 
-    <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/standard_metric_medium"-->
-        <!--android:layout_gravity="bottom"-->
-        <!--&gt;-->
-
-        <!--<ProgressBar-->
-            <!--android:id="@+id/progress_bar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:visibility="gone"-->
-            <!--/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/tv_end"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:text="@string/label_end"-->
-            <!--android:textSize="@dimen/standard_type_subheading"-->
-            <!--/>-->
-
-    <!--</FrameLayout>-->
-
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
@@ -48,73 +24,3 @@
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.design.widget.CoordinatorLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<FrameLayout-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--tools:context="com.reednit.android.ui.MainFragment"-->
-    <!--tools:showIn="@layout/activity_main"-->
-    <!--&gt;-->
-
-    <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/standard_metric_medium"-->
-        <!--android:layout_gravity="bottom"-->
-        <!--&gt;-->
-
-        <!--<ProgressBar-->
-            <!--android:id="@+id/progress_bar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:visibility="gone"-->
-            <!--/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/tv_end"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/label_end"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:textSize="@dimen/standard_type_subheading"-->
-            <!--/>-->
-
-    <!--</FrameLayout>-->
-
-
-
-    <!--<android.support.v4.widget.SwipeRefreshLayout-->
-        <!--android:id="@+id/swipe_refresh_layout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--&gt;-->
-
-        <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/recycler_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:paddingBottom="@dimen/standard_metric_medium"-->
-            <!--android:clipToPadding="false"-->
-            <!--/>-->
-
-    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
-
-<!--</FrameLayout>-->
