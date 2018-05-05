@@ -1,17 +1,15 @@
 package com.reednit.android.repository.remote
 
 import com.reednit.android.repository.local.Link
+import com.reednit.android.repository.remote.adapter.ListingJsonAdapter
 import com.reednit.android.repository.remote.adapter.NullStringAdapter
 import com.reednit.android.repository.remote.interceptor.AuthInterceptor
-import com.reednit.android.repository.remote.json.LinkJson
-import com.reednit.android.repository.remote.json.ListingJson
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.io.IOException
 
 object NetworkClient{
 
@@ -20,6 +18,7 @@ object NetworkClient{
     val moshi: Moshi = Moshi.Builder()
             .add(NullStringAdapter())
             .add(KotlinJsonAdapterFactory())
+            .add(ListingJsonAdapter())
             .build()
 
     private val mHttpClient: OkHttpClient = OkHttpClient.Builder()
@@ -36,22 +35,9 @@ object NetworkClient{
 
     fun fetchLinks(after: String): List<Link> {
 
-        val call: Call<ListingJson> = mService.getListing(after)
+        val call: Call<List<Link>> = mService.getListing(after)
+        return call.execute().body()!!
 
-        val listingJson: ListingJson = try {
-            call.execute().body()!!
-        } catch (e: IOException) {
-            throw IllegalStateException(e)
-        }
-
-        val children: List<LinkJson> = listingJson.data.children
-        val links: MutableList<Link> = ArrayList()
-
-        for(json in children){
-            links.add(Link(json.data))
-        }
-
-        return links
     }
 
 }

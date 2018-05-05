@@ -1,5 +1,6 @@
 package com.reednit.android.repository.remote.json
 
+import com.reednit.android.repository.local.Link
 import com.squareup.moshi.Json
 
 data class LinkDataJson(
@@ -27,4 +28,17 @@ data class LinkDataJson(
         @Json(name = "selftext_html")
         val selftextHtml: String
 
-)
+){
+
+    fun toLink() = Link(
+            uid = 0,
+            name = name,
+            title = title,
+            url = url,
+            thumbnail = thumbnail,
+            isSelf = isSelf,
+            selftext = selftext,
+            selftextHtml = selftextHtml
+    )
+
+}
