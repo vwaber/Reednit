@@ -8,9 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.reednit.android.R;
-import com.reednit.android.repository.local.LinkKt;
+import com.reednit.android.valueobject.LinkKt;
 import com.reednit.android.viewmodel.LinkViewModel;
-import com.reednit.android.repository.local.Link;
+import com.reednit.android.valueobject.Link;
 import com.reednit.android.ui.activity.ReednitActivity;
 import com.reednit.android.ui.recycler.LinkListAdapter;
 

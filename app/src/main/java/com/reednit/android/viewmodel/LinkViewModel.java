@@ -6,7 +6,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.reednit.android.repository.local.Link;
+import com.reednit.android.valueobject.Link;
 import com.reednit.android.repository.Repository;
 
 import java.util.List;

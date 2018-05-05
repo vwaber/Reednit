@@ -3,7 +3,7 @@ package com.reednit.android.repository
 import android.arch.lifecycle.LiveData
 import android.content.Context
 import com.reednit.android.repository.local.AppDatabase
-import com.reednit.android.repository.local.Link
+import com.reednit.android.valueobject.Link
 import com.reednit.android.repository.local.LinkDao
 import com.reednit.android.repository.remote.NetworkClient
 

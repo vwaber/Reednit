@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 
 import com.reednit.android.R;
 import com.reednit.android.viewmodel.LinkViewModel;
-import com.reednit.android.repository.local.Link;
+import com.reednit.android.valueobject.Link;
 import com.reednit.android.service.Fetcher;
 import com.reednit.android.service.FetcherIntentService;
 import com.reednit.android.ui.recycler.EndlessScrollListener;

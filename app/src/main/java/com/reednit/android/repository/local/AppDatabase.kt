@@ -4,6 +4,7 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
+import com.reednit.android.valueobject.Link
 
 private const val DATABASE_NAME: String = "reednit.db"
 

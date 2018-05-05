@@ -1,6 +1,6 @@
 package com.reednit.android.repository.remote
 
-import com.reednit.android.repository.local.Link
+import com.reednit.android.valueobject.Link
 import com.reednit.android.repository.remote.adapter.ListingJsonAdapter
 import com.reednit.android.repository.remote.adapter.NullStringAdapter
 import com.reednit.android.repository.remote.interceptor.AuthInterceptor

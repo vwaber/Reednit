@@ -5,9 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 
 import com.reednit.android.R;
-import com.reednit.android.repository.local.Link;
-import com.reednit.android.repository.local.LinkKt;
 import com.reednit.android.ui.activity.ReednitActivity;
+import com.reednit.android.valueobject.LinkKt;
 
 public class LinkDisplayActivity extends ReednitActivity {
 

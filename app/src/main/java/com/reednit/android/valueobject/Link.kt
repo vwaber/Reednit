@@ -1,4 +1,4 @@
-package com.reednit.android.repository.local
+package com.reednit.android.valueobject
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
